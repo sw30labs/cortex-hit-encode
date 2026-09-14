@@ -8,4 +8,4 @@ Pick **one** `hit_definition_id` per cohort freeze.
 | `certified-gold` | Certification ≥ gold in a named territory |
 | `streams-threshold` | Streams ≥ T on a named platform as of date D |
 
-Document chart name, territory, and retrieval date in the cohort `notes` or a `cohort-v0.md` sidecar.
+Document chart name, territory, and retrieval date in the cohort `notes` or a `cohort-v0.md` sidecar. Freeze **one** id on the Phase 1 checklist in `docs/protocol.md` before any encode.

@@ -27,14 +27,14 @@ Create a **new public repo** `sw30labs/cortex-hit-encode` as a **standalone enco
 - Use VideoCortex / TRIBE v2 **as-is** (encoding, average subject, haemodynamic lag).
 - Curate rights-cleared hit vs matched non-hit stimuli; batch-encode; analyze ROI / dynamics differences with confound controls and permutation tests.
 - Keep **all generate wiring out**: no LangGraph nodes in artist-twin, no album admission gates, no YuE2 prompt injection from cortex scores in v0.
-- Keep language discipline identical to Insight: no `hit_probability`, no decoder claims.
+- Keep language discipline identical to Insight and [docs/non-goals.md](../non-goals.md): no `hit_probability`, “likely a hit,” “% chance,” Billboard / chart forecast, “ensure a hit,” mind-reading, or decoder claims.
 - Optional future: feed **descriptive** encode findings into human-readable craft checklists only — separate ADR if/when earned.
 
 ## Consequences
 
 ### Positive
 
-- Clear scientific object: H1 encode separation vs H0/H2/H3.
+- Clear scientific object: H1 encode separation vs H0 / H2 / H3 (H4 deferred). Primary v0 endpoint: `mean_auditory_roi_energy`.
 - No false product promise inside Compose Track/Album.
 - Reuses an instrument Nic already invested in (VideoCortex).
 - Cool, publishable, wiki-friendly under Miscellaneous Research.
@@ -68,4 +68,4 @@ See [docs/non-goals.md](../non-goals.md). In particular: no decoder loop, no Bil
 
 ## Status of implementation
 
-Design docs in this repo. Pilot encodes deferred until cohort + rights + VideoCortex doctor are green.
+Design docs in this repo, plus a Phase 1 freeze checklist, `runs/receipt.example.json`, and an analysis outline. Pilot encodes deferred until cohort + rights + VideoCortex doctor are green. No results yet.

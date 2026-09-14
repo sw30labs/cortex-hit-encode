@@ -10,7 +10,11 @@ stimuli/**/*.mov
 stimuli/**/*.flac
 runs/**
 !runs/.gitkeep
+!runs/README.md
+!runs/receipt.example.json
 analysis/**/*.png
 analysis/**/*.npy
 analysis/**/*.h5
+!analysis/README.md
+!analysis/compare_encodes.py
 .videocortex-cache/
