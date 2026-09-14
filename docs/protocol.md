@@ -25,6 +25,17 @@ Nothing below is a result. These are the knobs that must stop moving before Phas
 
 Do not start encodes until every box above is checked.
 
+## Cohort v2 addendum freeze (2026-09-14, same-day; exploratory round 2)
+
+Same endpoint/test/lag mode/ROI list as v0 (above, unchanged). Differences, frozen before analysis:
+
+- `cohort-v2.csv` — 11 within-artist hit/non-hit pairs (22 stimuli), **full tracks** (user-supplied local WAVs; media not in git).
+- Hit definition v2: `user-labeled-v2-folders` — labels are the user's folder assignment (24hits / 24nonhits); YouTube `view_count` per source recorded in `rights_notes` as popularity evidence. Not a chart definition; treated as a fame-labeled cohort.
+- Trim policy v2: `full_track` (whole file, no trim). LUFS: same −16 two-pass policy, `lufs_post` covariate as in v0.
+- Pairing: 11 of the 20+20 usable clips pair within-artist (Soda Stereo ×2, Sumo ×2, Charly, Fito, Redondos, Indio/WOS, Skay, Attaque 77, Enanitos Verdes). Unpaired clips (e.g. Redondos extras, Cerati "Cosas Imposibles" — labeled nonhit but with 56M views, WOS excluded as artist-crossing) are **excluded**, not force-matched.
+- Known v2 caveats recorded at freeze: (1) "Cosas Imposibles" is a Cerati hit by any popularity view — excluded because pairing against it would poison a pair; (2) WOS×Indio "QUEMARÁS" pairs against an Indio deep cut, so the pair spans two artists — kept but flagged; (3) hit-definition source (views) is YouTube-only and biased by upload age/channel.
+- Freeze commit (manifest+hashes): `c396d13`.
+
 ## 0. Preconditions
 
 - [ ] `che doctor` green on the machine that will encode (`che doctor --offline` after weights are local)

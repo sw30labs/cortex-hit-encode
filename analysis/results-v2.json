@@ -1,0 +1,99 @@
+{
+ "n_pairs": 11,
+ "roi_labels": [
+  "L G temp sup-G T transv",
+  "L G temp sup-Lateral",
+  "L G temp sup-Plan tempo",
+  "R G temp sup-G T transv",
+  "R G temp sup-Lateral",
+  "R G temp sup-Plan tempo"
+ ],
+ "roi_vertices": 573,
+ "mean_hit": 0.13382596454837106,
+ "mean_nonhit": 0.13628455115990204,
+ "unadjusted_diff": -0.0024585866115309977,
+ "unadjusted_p": 0.8411579421028949,
+ "adjusted_diff": -0.002661429281158216,
+ "adjusted_p": 0.8419579021048947,
+ "hits_higher_count": 4,
+ "effect_dz": -0.05495762304378214,
+ "per_stimulus": [
+  {
+   "pair": "pair-attaque-0",
+   "hit_id": "hit-attaque-77-no-me-arrepiento-de-este-amor",
+   "nonhit_id": "nonh-chicos-y-perros",
+   "hit_energy": 0.14217302203178406,
+   "nonhit_energy": 0.16480058431625366
+  },
+  {
+   "pair": "pair-charly-0",
+   "hit_id": "hit-charly-garc-a-no-voy-en-tren-official-au",
+   "nonhit_id": "nonh-charly-garc-a-bancate-ese-defecto-audio",
+   "hit_energy": 0.10344104468822479,
+   "nonhit_energy": 0.16902023553848267
+  },
+  {
+   "pair": "pair-enanitos-0",
+   "hit_id": "hit-los-enanitos-verdes-lamento-boliviano",
+   "nonhit_id": "nonh-enanitos-verdes-luz-de-d-a-letra",
+   "hit_energy": 0.14815331995487213,
+   "nonhit_energy": 0.16771100461483002
+  },
+  {
+   "pair": "pair-fito-0",
+   "hit_id": "hit-fito-paez-el-amor-despues-del-amor-offic",
+   "nonhit_id": "nonh-fito-p-ez-cable-a-tierra-audio",
+   "hit_energy": 0.12297271937131882,
+   "nonhit_energy": 0.18516166508197784
+  },
+  {
+   "pair": "pair-indio-0",
+   "hit_id": "hit-wos-ft-indio-solari-quemar-s",
+   "nonhit_id": "nonh-hab-a-una-vez-indio-solari-letra-pajarit",
+   "hit_energy": 0.1613357812166214,
+   "nonhit_energy": 0.15025614202022552
+  },
+  {
+   "pair": "pair-redondos-0",
+   "hit_id": "hit-la-bestia-pop",
+   "nonhit_id": "nonh-una-piba-con-la-remera-de-greenpeace",
+   "hit_energy": 0.1752183586359024,
+   "nonhit_energy": 0.1144823431968689
+  },
+  {
+   "pair": "pair-skay-0",
+   "hit_id": "hit-abalorios-talism-n-2004-skay-beilinson",
+   "nonhit_id": "nonh-d-nde-est-s-talism-n-2004-skay-beilinson",
+   "hit_energy": 0.08832663297653198,
+   "nonhit_energy": 0.10874128341674805
+  },
+  {
+   "pair": "pair-soda-0",
+   "hit_id": "hit-soda-stereo-de-m-sica-ligera-lyrics",
+   "nonhit_id": "nonh-soda-stereo-primavera-0-official-video",
+   "hit_energy": 0.09438154101371765,
+   "nonhit_energy": 0.1079636886715889
+  },
+  {
+   "pair": "pair-soda-1",
+   "hit_id": "hit-soda-stereo-cuando-pase-el-temblor-offic",
+   "nonhit_id": "nonh-soda-stereo-angel-el-ctrico-official-aud",
+   "hit_energy": 0.08771225064992905,
+   "nonhit_energy": 0.08782787621021271
+  },
+  {
+   "pair": "pair-sumo-0",
+   "hit_id": "hit-sumo-la-rubia-tarada-official-video",
+   "nonhit_id": "nonh-sumo-breaking-away-corpi-os-en-la-madrug",
+   "hit_energy": 0.18449872732162476,
+   "nonhit_energy": 0.10876543819904327
+  },
+  {
+   "pair": "pair-sumo-1",
+   "hit_id": "hit-sumo-mejor-no-hablar-de-ciertas-cosas-of",
+   "nonhit_id": "nonh-sumo-estallando-desde-el-oceano-official",
+   "hit_energy": 0.16387221217155457,
+   "nonhit_energy": 0.13439980149269104
+  }
+ ]
+}

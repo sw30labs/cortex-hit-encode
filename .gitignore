@@ -19,3 +19,7 @@ analysis/**/*.h5
 !analysis/compare_encodes.py
 .videocortex-cache/
 .che-cache/
+# user-supplied media drop (round 2) — media stays out of git
+24hits/
+24nonhits/
+*.egg-info/
