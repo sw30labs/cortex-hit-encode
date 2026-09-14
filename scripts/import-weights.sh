@@ -233,7 +233,9 @@ fi
 
 echo
 echo "importing hub models -> $HF_DEST"
-mkdir -p "$HF_DEST"
+if [ "$DRY_RUN" -eq 0 ]; then
+  mkdir -p "$HF_DEST"
+fi
 for repo in "${REQUIRED_REPOS[@]}"; do
   name=$(hub_dirname "$repo")
   copy_or_hardlink "$HF_SRC/$name" "$HF_DEST/$name"
@@ -250,6 +252,13 @@ if [ -n "$FEATURE_SRC" ]; then
 fi
 
 echo
+if [ "$DRY_RUN" -eq 1 ]; then
+  echo "verify (dry-run): sources present; dest not written"
+  echo
+  echo "done (dry-run)."
+  exit 0
+fi
+
 echo "verify"
 fail=0
 for repo in "${REQUIRED_REPOS[@]}"; do
@@ -263,7 +272,7 @@ for repo in "${REQUIRED_REPOS[@]}"; do
     fail=1
   fi
 done
-if [ -n "$FEATURE_SRC" ] && [ "$DRY_RUN" -eq 0 ]; then
+if [ -n "$FEATURE_SRC" ]; then
   if dir_nonempty "$FEATURE_DEST"; then
     echo "  ok      feature cache  $(human_size "$FEATURE_DEST")"
   else
