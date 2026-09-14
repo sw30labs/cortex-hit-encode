@@ -2,13 +2,38 @@
 
 # cortex-hit-encode
 
-**Status: CLOSED (2026-09-14).** Ran two frozen rounds (v0: 14 pairs of 30 s previews; v2: 11 pairs of full tracks). Primary test null both times — H1 not supported, H0 stands. Thesis falsified at the tested operationalization; see [docs/conclusion.md](docs/conclusion.md). The `che` instrument remains usable and maintained-while-archived; no round 3 at this endpoint.
+**Status: CLOSED (2026-09-14).** See conclusion below; full write-up in [docs/conclusion.md](docs/conclusion.md).
 
 <details><summary>Original framing</summary>
 
 Encode hit vs matched non-hit stimuli with [VideoCortex](https://github.com/sw30labs/videocortex) / [TRIBE v2](https://github.com/facebookresearch/tribev2). Compare predicted **average-subject** cortical maps. Learn whether “hitness” leaves a fingerprint in the encoding — not whether a song will chart.
 
 </details>
+
+## Conclusion (2026-09-14)
+
+**The thesis was falsified at the tested operationalization. H1 (encode
+separation) is not supported; H0 stands.** An encoding model predicting the
+average-subject cortical response (TRIBE v2, frozen endpoint
+`mean_auditory_roi_energy`, frozen within-pair permutation test) found **no
+difference** between hit-labeled tracks and matched non-hits from the same
+artists — in either of two pre-registered rounds:
+
+| Round | Stimuli | Pairs | dz | perm p | hits > nonhits |
+|---|---|---|---|---|---|
+| v0 (`30e6d8b`) | 30 s official previews | 14 | −0.21 | 0.448 | 6/14 |
+| v2 (`c396d13`) | full tracks (user-supplied WAVs) | 11 | −0.055 | 0.841 | 4/11 |
+
+Point estimates sat on the *wrong side* of zero both times (hits marginally
+lower), and covariate adjustment for loudness/duration changed nothing.
+H2 (confound) was never reached; H3 (fame proxy) untestable by construction;
+H4 never triggered. The conclusion holds **conditional on the assumptions
+listed in [docs/conclusion.md](docs/conclusion.md)** — chiefly that TRIBE's
+auditory-ROI output is sensitive to whatever distinguishes these recordings
+(it is fitted mostly on naturalistic stimulation) and that hit labels carry
+an acoustic signature at all. Rejecting an assumption reopens a *different*
+experiment, not this one. No round 3 at this endpoint; the `che` instrument
+survives as a reusable, tested artifact.
 
 ## What this is
 
