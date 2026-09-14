@@ -1,0 +1,120 @@
+{
+ "n_pairs": 14,
+ "roi_labels": [
+  "L G temp sup-G T transv",
+  "L G temp sup-Lateral",
+  "L G temp sup-Plan tempo",
+  "R G temp sup-G T transv",
+  "R G temp sup-Lateral",
+  "R G temp sup-Plan tempo"
+ ],
+ "roi_vertices": 573,
+ "mean_hit": 0.1784269799079214,
+ "mean_nonhit": 0.19148425438574382,
+ "unadjusted_diff": -0.01305727447782244,
+ "unadjusted_p": 0.447877606119694,
+ "adjusted_diff": -0.011092972631029823,
+ "adjusted_p": 0.5444227788610569,
+ "hits_higher_count": 6,
+ "effect_dz": -0.20649076592702306,
+ "per_stimulus": [
+  {
+   "pair": "pair-babas-nicos-0",
+   "hit_id": "hit-irresponsables",
+   "nonhit_id": "nonh-puesto",
+   "hit_energy": 0.3016236126422882,
+   "nonhit_energy": 0.21905364096164703
+  },
+  {
+   "pair": "pair-babas-nicos-1",
+   "hit_id": "hit-putita",
+   "nonhit_id": "nonh-viva-satana",
+   "hit_energy": 0.17916302382946014,
+   "nonhit_energy": 0.24425074458122253
+  },
+  {
+   "pair": "pair-charly-garcia-0",
+   "hit_id": "hit-no-voy-en-tren",
+   "nonhit_id": "nonh-filosof-a-barata-y-zapatos-de-go",
+   "hit_energy": 0.1318199634552002,
+   "nonhit_energy": 0.2521539628505707
+  },
+  {
+   "pair": "pair-charly-garcia-1",
+   "hit_id": "hit-no-me-dejan-salir",
+   "nonhit_id": "nonh-primavera",
+   "hit_energy": 0.1358257681131363,
+   "nonhit_energy": 0.15699522197246552
+  },
+  {
+   "pair": "pair-fito-paez-0",
+   "hit_id": "hit-el-amor-despu-s-del-amor",
+   "nonhit_id": "nonh-alguna-vez-voy-a-ser-libre",
+   "hit_energy": 0.17983239889144897,
+   "nonhit_energy": 0.18664945662021637
+  },
+  {
+   "pair": "pair-fito-paez-1",
+   "hit_id": "hit-mariposa-tecknicolor",
+   "nonhit_id": "nonh-track-track",
+   "hit_energy": 0.2685701251029968,
+   "nonhit_energy": 0.19558273255825043
+  },
+  {
+   "pair": "pair-indio-solari-0",
+   "hit_id": "hit-hab-a-una-vez",
+   "nonhit_id": "nonh-el-muerto-gim-nez",
+   "hit_energy": 0.1682184934616089,
+   "nonhit_energy": 0.2814720571041107
+  },
+  {
+   "pair": "pair-indio-solari-1",
+   "hit_id": "hit-la-oscuridad",
+   "nonhit_id": "nonh-falta-tan-poco-para-nada",
+   "hit_energy": 0.14794112741947174,
+   "nonhit_energy": 0.12361060082912445
+  },
+  {
+   "pair": "pair-patricio-rey-y-sus-redonditos-de-0",
+   "hit_id": "hit-ji-ji-ji",
+   "nonhit_id": "nonh-rato-molhado",
+   "hit_energy": 0.18486323952674866,
+   "nonhit_energy": 0.17035730183124542
+  },
+  {
+   "pair": "pair-patricio-rey-y-sus-redonditos-de-1",
+   "hit_id": "hit-la-bestia-pop",
+   "nonhit_id": "nonh-pensando-como-una-acelga",
+   "hit_energy": 0.15920549631118774,
+   "nonhit_energy": 0.16849565505981445
+  },
+  {
+   "pair": "pair-soda-stereo-0",
+   "hit_id": "hit-de-m-sica-ligera",
+   "nonhit_id": "nonh-ameba",
+   "hit_energy": 0.1443086415529251,
+   "nonhit_energy": 0.14267675578594208
+  },
+  {
+   "pair": "pair-soda-stereo-1",
+   "hit_id": "hit-persiana-americana",
+   "nonhit_id": "nonh-g-nesis",
+   "hit_energy": 0.11450287699699402,
+   "nonhit_energy": 0.17625592648983002
+  },
+  {
+   "pair": "pair-sumo-0",
+   "hit_id": "hit-mejor-no-hablar-de-ciertas-cosas",
+   "nonhit_id": "nonh-noche-de-paz",
+   "hit_energy": 0.13748930394649506,
+   "nonhit_energy": 0.17954126000404358
+  },
+  {
+   "pair": "pair-sumo-1",
+   "hit_id": "hit-la-rubia-tarada",
+   "nonhit_id": "nonh-el-reggae-de-paz-y-amor",
+   "hit_energy": 0.2446136474609375,
+   "nonhit_energy": 0.18368424475193024
+  }
+ ]
+}

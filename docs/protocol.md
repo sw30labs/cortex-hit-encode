@@ -20,7 +20,7 @@ Nothing below is a result. These are the knobs that must stop moving before Phas
 - [x] Lag mode **one of:** `stimulus` (recommended) | `scanner` — write it here: `stimulus`
 - [x] Primary endpoint name frozen as `mean_auditory_roi_energy` (do not rename in the report)
 - [x] Primary test frozen: two-sided permutation of the hit − non-hit difference on that scalar (shuffle within `pair_id` if present, else within cohort); unadjusted + loudness/duration-adjusted
-- [x] Auditory ROI list frozen — exact `che` / Destrieux strings, confirmed against the overlay. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`. Write the frozen list: `L/R "G temp sup/G T transv", L/R "G temp sup/Plan tempo", L/R "G temp sup/Lateral" (nilearn Destrieux labels G_temp_sup-G_T_transv, G_temp_sup-Plan_tempo, G_temp_sup-Lateral; confirmed present via fetch_atlas_surf_destrieux + regions._clean_name)`
+- [x] Auditory ROI list frozen — exact `che` / Destrieux strings, confirmed against the overlay. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`. Write the frozen list: `L/R "G temp sup-G T transv", L/R "G temp sup-Plan tempo", L/R "G temp sup-Lateral" (exact strings emitted by cortex_hit_encode.regions.load_region_labels on this machine, verified 2026-09-14; the protocol's earlier "/" rendering was cosmetic)`
 - [x] `stimuli/manifests/cohort-v0.csv` committed; record that commit SHA: `30e6d8b (frozen 2026-09-14; amended with this SHA)`
 
 Do not start encodes until every box above is checked.
