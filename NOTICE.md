@@ -12,7 +12,7 @@ This experiment repo does not redistribute those weights.
 ## VideoCortex
 
 Local instrument around TRIBE: https://github.com/sw30labs/videocortex  
-Encoding direction only.
+Encoding direction only. This repo does not decode, forecast charts, or ship model weights.
 
 ## Stimuli
 

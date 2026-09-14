@@ -4,7 +4,7 @@
 
 Encode hit vs matched non-hit stimuli with [VideoCortex](https://github.com/sw30labs/videocortex) / [TRIBE v2](https://github.com/facebookresearch/tribev2). Compare predicted **average-subject** cortical maps. Learn whether “hitness” leaves a fingerprint in the encoding — not whether a song will chart.
 
-**Status:** design phase (hypothesis + ADR + plan). No batch encodes required to clone this repo.
+**Status:** design phase (hypothesis + ADR + plan + Phase 1 freeze checklist). No batch encodes required to clone this repo. No results yet.
 
 ## What this is
 
@@ -16,8 +16,8 @@ Encode hit vs matched non-hit stimuli with [VideoCortex](https://github.com/sw30
 ## What this is not
 
 - Not a decoder (no fMRI → song).
-- Not a mind-reader; not *your* cortex — TRIBE’s **average subject**.
-- Not a hit predictor. Never `hit_probability`. Never “ensure a hit.”
+- Not a mind-reader; not *your* cortex — TRIBE’s **average subject**. Never “this is what someone is thinking.”
+- Not a hit predictor. Never `hit_probability`, “likely a hit,” “% chance,” Billboard / chart forecast, or “ensure a hit.”
 - **Not wired** into [artist-twin](https://github.com/sw30labs) Compose Album / Track. Artist-twin’s Insight `hit_patterns` craft scores stay separate.
 
 See [docs/non-goals.md](docs/non-goals.md).
@@ -26,10 +26,11 @@ See [docs/non-goals.md](docs/non-goals.md).
 
 | Doc | Role |
 |---|---|
-| [docs/hypothesis.md](docs/hypothesis.md) | H1 / H0 / confound alternatives, predictions, falsifiers |
+| [docs/hypothesis.md](docs/hypothesis.md) | H1 / H0 / H2 / H3 (H4 deferred), predictions, falsifiers |
 | [docs/adr/001-cortex-hit-encode.md](docs/adr/001-cortex-hit-encode.md) | Decision record |
-| [docs/experiment-plan.md](docs/experiment-plan.md) | Phased plan, metrics, risks |
-| [docs/protocol.md](docs/protocol.md) | Pilot checklist (e.g. 8+8 rock-español / Indio-adjacent) |
+| [docs/experiment-plan.md](docs/experiment-plan.md) | Phased plan; primary endpoint `mean_auditory_roi_energy` |
+| [docs/protocol.md](docs/protocol.md) | Phase 1 freeze checklist + pilot steps |
+| [docs/non-goals.md](docs/non-goals.md) | Binding non-goals + canonical language ban |
 | [NOTICE.md](NOTICE.md) | TRIBE NC + stimulus rights |
 
 ## Instrument
@@ -39,23 +40,25 @@ Use the sibling VideoCortex CLI/deck for encodes. This repo stores **cohort mani
 ```bash
 # later, once past design phase:
 # videocortex doctor
-# videocortex render --video path/to/stimulus.mp4   # or audio-primary workflow per VideoCortex docs
+# videocortex render --audio path/to/stimulus.wav   # v0 is audio-primary; video only if freeze says so
 ```
 
 ## Layout
 
 ```
 stimuli/     # rights-cleared clips live outside git by default; manifests only
-runs/        # encode outputs / pointers (large binaries gitignored)
-analysis/    # notebooks / scripts for ROI diffs
-docs/        # hypothesis, ADR, plan, protocol
+runs/        # encode outputs / pointers (large binaries gitignored); receipt schema
+analysis/    # Phase 4 outline only — no results yet
+docs/        # hypothesis, ADR, plan, protocol, non-goals
 ```
 
 ## Language ban list (UX + papers)
 
-Say: *hit-labeled cohort*, *encode separation*, *predicted cortical response*, *hit-shaped craft* (only if bridging later).
+Canonical copy lives in [docs/non-goals.md](docs/non-goals.md). Same list here:
 
-Never: `hit_probability`, “likely a hit,” “% chance,” Billboard forecast, “this is what someone is thinking,” decoder claims.
+**Say:** *hit-labeled cohort*, *encode separation*, *predicted cortical response*, *predicted average-subject maps*. *hit-shaped craft* only if bridging later (H4, deferred).
+
+**Never:** `hit_probability`, “likely a hit,” “% chance,” Billboard forecast, chart forecast, “ensure a hit,” “this is what someone is thinking,” mind-reading, decoder claims.
 
 ## License
 

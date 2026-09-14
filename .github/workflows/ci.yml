@@ -17,3 +17,21 @@ jobs:
           test -f docs/protocol.md
           test -f docs/non-goals.md
           test -f NOTICE.md
+          test -f runs/README.md
+          test -f runs/receipt.example.json
+          test -f analysis/README.md
+          test -f analysis/compare_encodes.py
+      - name: analysis stub exits 2 without receipts
+        run: |
+          set +e
+          python3 analysis/compare_encodes.py
+          code=$?
+          set -e
+          test "$code" -eq 2
+      - name: language ban and primary endpoint names
+        run: |
+          grep -q 'hit_probability' README.md
+          grep -q 'hit_probability' docs/non-goals.md
+          grep -q 'mean_auditory_roi_energy' docs/experiment-plan.md
+          grep -q 'mean_auditory_roi_energy' docs/protocol.md
+          grep -q 'mean_auditory_roi_energy' docs/hypothesis.md

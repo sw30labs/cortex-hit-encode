@@ -1,50 +1,73 @@
 # Pilot protocol — cohort v0
 
-Checklist for the first real batch. Complete Phase 1 freeze before encodes.
+Checklist for the first real batch. Complete the **Phase 1 freeze** before any encode.
+
+Hypotheses and call rules: [hypothesis.md](hypothesis.md).  
+Primary endpoint name (same as [experiment-plan.md](experiment-plan.md)): **`mean_auditory_roi_energy`**.  
+Language: [non-goals.md](non-goals.md).
+
+## Freeze (Phase 1 — do this first)
+
+Nothing below is a result. These are the knobs that must stop moving before Phase 3.
+
+- [ ] Ban list read (README + [non-goals.md](non-goals.md))
+- [ ] One `hit_definition_id` from `stimuli/manifests/hit-definitions.md`, with chart/territory/source + retrieval date written in cohort notes
+- [ ] Matching rules written: genre band, language, era window (**±5 years** unless you record another), optional tempo/energy band
+- [ ] ≥8 hit-labeled + ≥8 matched non-hit rows in `stimuli/manifests/cohort-v0.csv` (from the example)
+- [ ] Optional H3: ≥4 within-artist pairs (`pair_id` shared); if fewer, H3 is underpowered — say so, do not peek later
+- [ ] Trim policy **one of:** `fixed_window_30s` (recommended) | `full_track` — write it here: `____________`
+- [ ] LUFS target written (recommended **−16 LUFS** integrated): `____________`
+- [ ] Lag mode **one of:** `stimulus` (recommended) | `scanner` — write it here: `____________`
+- [ ] Primary endpoint name frozen as `mean_auditory_roi_energy` (do not rename in the report)
+- [ ] Primary test frozen: two-sided permutation of the hit − non-hit difference on that scalar (shuffle within `pair_id` if present, else within cohort); unadjusted + loudness/duration-adjusted
+- [ ] Auditory ROI list frozen — exact VideoCortex / Destrieux strings, confirmed against the overlay. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`. Write the frozen list: `____________`
+- [ ] `stimuli/manifests/cohort-v0.csv` committed; record that commit SHA: `____________`
+
+Do not start encodes until every box above is checked.
 
 ## 0. Preconditions
 
 - [ ] VideoCortex `doctor` green on the machine that will encode
 - [ ] TRIBE weights available under NC research use
-- [ ] This repo docs read; ban list acknowledged
 - [ ] Local data root created (e.g. `/Volumes/DATA/cortex-hit-encode/stimuli`) — **not** committed
 
 ## 1. Cohort (example band)
 
 **Example (replace if you prefer another band):** rock-español / Argentine rock, roughly Indio-adjacent catalog for familiarity — still requires **rights-cleared** audio you control or license.
 
-- [ ] List ≥8 hit-labeled tracks with frozen hit definition
-- [ ] List ≥8 matched non-hits
-- [ ] Optional: ≥4 within-artist hit/deep-cut pairs for H3
-- [ ] Commit `stimuli/manifests/cohort-v0.csv`
-
 ### Suggested CSV columns
 
 `id,label,artist,title,year,language,genre_tags,rights_basis,rights_notes,local_relpath,duration_s,lufs_pre,lufs_post,hit_definition_id,pair_id,notes`
 
-## 2. Prep
+`label` is `hit` or `nonhit` only.
+
+## 2. Prep (Phase 2)
 
 - [ ] Copy files into local data root mirroring `local_relpath`
-- [ ] Loudness normalize to agreed LUFS; fill lufs_* columns
+- [ ] Loudness normalize to the **frozen** LUFS target; fill `lufs_pre` / `lufs_post`
+- [ ] Apply the frozen trim policy only
 - [ ] Hash each file (`sha256`); store in `stimuli/manifests/hashes-v0.json`
-- [ ] Trim policy recorded in manifest `notes` or global `docs/experiment-plan.md` freeze line
 
-## 3. Encode
+## 3. Encode (Phase 3)
 
 For each stimulus:
 
-- [ ] `videocortex render …` (exact flags recorded in `runs/.../receipt.json`)
-- [ ] Confirm lag mode
-- [ ] Save contact sheet / ROI export paths in receipt
+- [ ] `videocortex render --audio …` (or `--video` only if freeze said so). Exact flags in `runs/<cohort>/<stimulus_id>/receipt.json` — see `runs/receipt.example.json`
+- [ ] Read / overlay time alignment uses the frozen lag mode (`stimulus` vs `scanner` is a VideoCortex overlay read, not a second encode). Do not mix modes in one cohort.
+- [ ] Point receipt at VideoCortex `manifest.json`, `predictions.npy`, contact sheet / overlay paths
+- [ ] Record VideoCortex git SHA + TRIBE weight revision in the receipt
 - [ ] On failure: `status=failed`, reason, do not analyze
 
-## 4. Analysis gate
+## 4. Analysis gate (Phase 4)
 
-- [ ] Primary ROI list frozen
-- [ ] Run permutation test script (to be added in Phase 4)
-- [ ] Write `analysis/report-v0.md` with H0/H1/H2/H3 call
+- [ ] Every analyzed row has `status=ok` and a receipt
+- [ ] Compute **`mean_auditory_roi_energy`** only on the frozen ROI list
+- [ ] Run the pre-registered permutation test (outline: [analysis/README.md](../analysis/README.md); script stub: `analysis/compare_encodes.py`)
+- [ ] H2 sensitivity and H3 within-artist slice if the freeze said they were in scope
+- [ ] Write `analysis/report-v0.md` with an H0 / H1 / H2 / H3 call — no invented numbers, no generate wiring
 
 ## 5. Stop rules
 
-- Stop generate-wiring discussions until report exists.
-- Stop if rights unclear for any stimulus — drop it, do not “just use YouTube.”
+- Stop generate-wiring discussions until the report exists.
+- Stop if rights are unclear for any stimulus — drop it, do not “just use YouTube.”
+- Stop if lag modes or trim/LUFS policy drifted mid-batch — fix and re-encode; do not interpret a mixed run.

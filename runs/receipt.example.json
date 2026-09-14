@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "note": "Example schema only. Not a real encode. Replace every placeholder before Phase 4.",
+  "cohort_id": "v0",
+  "cohort_manifest": "stimuli/manifests/cohort-v0.csv",
+  "cohort_manifest_git_sha": "<git sha of the Phase 1 freeze commit>",
+  "stimulus_id": "hit-001",
+  "label": "hit",
+  "pair_id": "pair-a",
+  "stimulus_sha256": "<sha256 of the trimmed, loudness-normalized file>",
+  "status": "ok",
+  "failure_reason": null,
+  "videocortex_git_sha": "<sha>",
+  "videocortex_command": [
+    "videocortex",
+    "render",
+    "--audio",
+    "<local path>"
+  ],
+  "tribe_weight_revision": "<id or hash from videocortex doctor / HF>",
+  "lag_mode": "stimulus",
+  "trim_policy": "fixed_window_30s",
+  "lufs_target": -16,
+  "lufs_pre": null,
+  "lufs_post": null,
+  "duration_s": null,
+  "primary_endpoint": "mean_auditory_roi_energy",
+  "roi_labels_frozen": [
+    "confirm Destrieux strings at Phase 1 freeze"
+  ],
+  "videocortex_run_dir": "<local path to VideoCortex run>",
+  "output_paths": {
+    "manifest": "manifest.json",
+    "predictions": "predictions.npy",
+    "contact_sheet": null,
+    "overlay": null
+  },
+  "created_at": null
+}
