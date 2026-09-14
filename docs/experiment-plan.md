@@ -1,5 +1,8 @@
 # Experiment plan — cortex-hit-encode
 
+> **CLOSED 2026-09-14.** Plan executed in full (v0 + v2 rounds, both null).
+> Final call: [conclusion.md](conclusion.md). Plan kept as written.
+
 Version: 0.2 (design; endpoint named)  
 Date: 2026-09-14
 

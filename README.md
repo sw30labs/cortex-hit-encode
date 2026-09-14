@@ -2,9 +2,13 @@
 
 # cortex-hit-encode
 
+**Status: CLOSED (2026-09-14).** Ran two frozen rounds (v0: 14 pairs of 30 s previews; v2: 11 pairs of full tracks). Primary test null both times — H1 not supported, H0 stands. Thesis falsified at the tested operationalization; see [docs/conclusion.md](docs/conclusion.md). The `che` instrument remains usable and maintained-while-archived; no round 3 at this endpoint.
+
+<details><summary>Original framing</summary>
+
 Encode hit vs matched non-hit stimuli with [VideoCortex](https://github.com/sw30labs/videocortex) / [TRIBE v2](https://github.com/facebookresearch/tribev2). Compare predicted **average-subject** cortical maps. Learn whether “hitness” leaves a fingerprint in the encoding — not whether a song will chart.
 
-**Status:** self-contained instrument + design phase (hypothesis + ADR + plan + Phase 1 freeze checklist). Clone and install this repo to encode — no sibling VideoCortex checkout. No batch encodes required to clone. No results yet.
+</details>
 
 ## What this is
 
@@ -26,6 +30,8 @@ See [docs/non-goals.md](docs/non-goals.md).
 
 | Doc | Role |
 |---|---|
+| [docs/conclusion.md](docs/conclusion.md) | **Final call — research closed.** Results, assumptions relied upon, what closing means |
+| [analysis/report-v0.md](analysis/report-v0.md) / [analysis/report-v2.md](analysis/report-v2.md) | Round reports (previews / full tracks); numbers in `analysis/results-v0.json` / `results-v2.json` |
 | [docs/hypothesis.md](docs/hypothesis.md) | H1 / H0 / H2 / H3 (H4 deferred), predictions, falsifiers |
 | [docs/adr/001-cortex-hit-encode.md](docs/adr/001-cortex-hit-encode.md) | Experiment decision record |
 | [docs/adr/002-self-contained-instrument.md](docs/adr/002-self-contained-instrument.md) | Vendored `che` instrument |
@@ -75,7 +81,7 @@ src/cortex_hit_encode/   # vendored encode instrument (che)
 scripts/import-weights.sh
 stimuli/                 # rights-cleared clips live outside git; manifests only
 runs/                    # encode outputs / pointers (binaries gitignored)
-analysis/                # Phase 4 outline only — no results yet
+analysis/                # phase-4 scripts + reports (v0, v2) — both null
 docs/                    # hypothesis, ADRs, plan, protocol, non-goals
 .che-cache/              # feature cache (gitignored)
 ```

@@ -1,6 +1,9 @@
-# Analysis (Phase 4 outline)
+# Analysis (Phase 4 — complete)
 
-No results live here yet. Do not add a report until real receipts exist.
+Results live here: `report-v0.md` / `results-v0.json` (previews) and
+`report-v2.md` / `results-v2.json` (full tracks) — both null. Final call:
+`../docs/conclusion.md`. Scripts: `phase4.py`, `phase4_v2.py` (frozen test),
+`plot_null_v2.py` (independent recompute + figure).
 
 **Primary endpoint:** `mean_auditory_roi_energy`  
 **Primary test:** two-sided permutation of the hit − non-hit difference  

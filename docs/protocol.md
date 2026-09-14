@@ -1,5 +1,9 @@
 # Pilot protocol — cohort v0
 
+> **CLOSED 2026-09-14.** Protocol followed as frozen for v0 and (with the
+> recorded addendum) for v2; both rounds null. Final call:
+> [conclusion.md](conclusion.md).
+
 Checklist for the first real batch. Complete the **Phase 1 freeze** before any encode.
 
 Hypotheses and call rules: [hypothesis.md](hypothesis.md).  

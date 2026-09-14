@@ -1,5 +1,14 @@
 # Hypotheses — cortex-hit-encode
 
+> **CLOSED 2026-09-14.** Two frozen rounds run (v0 previews n=14 pairs; v2
+> full tracks n=11 pairs). Call rule 1 fired both times: primary test not
+> above the permutation null → **H0; H1 not supported.** dz = −0.21 (p=0.45)
+> and dz = −0.055 (p=0.84), point estimates on the wrong side of zero in
+> both rounds. H2 never reached, H3 untestable by construction, H4 never
+> triggered. Final call + assumptions relied upon:
+> [conclusion.md](conclusion.md). Text below is the pre-registration as
+> written before any encode — kept unedited.
+
 Date: 2026-09-14  
 Instrument: `che` (vendored VideoCortex encode path) + TRIBE v2 (encoding, average subject)  
 Sibling craft work (out of band): artist-twin `insight/hit_patterns.py` (lyric structure only)
