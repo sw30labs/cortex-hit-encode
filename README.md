@@ -1,3 +1,5 @@
+<p align="right"><img src="docs/aineko.svg" alt="" width="56" /></p>
+
 # cortex-hit-encode
 
 Encode hit vs matched non-hit stimuli with [VideoCortex](https://github.com/sw30labs/videocortex) / [TRIBE v2](https://github.com/facebookresearch/tribev2). Compare predicted **average-subject** cortical maps. Learn whether “hitness” leaves a fingerprint in the encoding — not whether a song will chart.
