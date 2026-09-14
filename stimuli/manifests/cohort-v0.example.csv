@@ -1,0 +1,3 @@
+id,label,artist,title,year,language,genre_tags,rights_basis,rights_notes,local_relpath,duration_s,lufs_pre,lufs_post,hit_definition_id,pair_id,notes
+hit-001,hit,Example Artist,Example Hit,1995,es,rock-espanol,owned-library,replace-me,hit-001/audio.wav,,,,chart-peak-le-20,pair-a,example row — delete
+ctrl-001,nonhit,Example Artist,Example Deep Cut,1995,es,rock-espanol,owned-library,replace-me,ctrl-001/audio.wav,,,,chart-peak-le-20,pair-a,matched control example

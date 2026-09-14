@@ -1,0 +1,16 @@
+.DS_Store
+__pycache__/
+.venv/
+*.pyc
+# media and heavy run artifacts
+stimuli/**/*.wav
+stimuli/**/*.mp3
+stimuli/**/*.mp4
+stimuli/**/*.mov
+stimuli/**/*.flac
+runs/**
+!runs/.gitkeep
+analysis/**/*.png
+analysis/**/*.npy
+analysis/**/*.h5
+.videocortex-cache/

@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: required docs exist
+        run: |
+          test -f README.md
+          test -f docs/hypothesis.md
+          test -f docs/adr/001-cortex-hit-encode.md
+          test -f docs/experiment-plan.md
+          test -f docs/protocol.md
+          test -f docs/non-goals.md
+          test -f NOTICE.md
