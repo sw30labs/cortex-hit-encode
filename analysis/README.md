@@ -10,7 +10,7 @@ Same names as [docs/experiment-plan.md](../docs/experiment-plan.md) and [docs/pr
 
 - Frozen `stimuli/manifests/cohort-v0.csv`
 - One `runs/<cohort>/<id>/receipt.json` per stimulus (`status=ok` only)
-- VideoCortex `predictions.npy` (`n_TR × 20484` fsaverage5) plus the Destrieux map VideoCortex already uses
+- `che` `predictions.npy` (`n_TR × 20484` fsaverage5) plus the Destrieux map the instrument already uses
 
 ## Steps (Karpathy-simple)
 

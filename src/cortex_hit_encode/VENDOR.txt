@@ -1,0 +1,8 @@
+Vendored from https://github.com/sw30labs/videocortex
+commit b34589552925338491cee8aee7087722be21c7d9
+
+Encode / render / doctor / fetch / overlay / draw only.
+Command deck (serve / web) omitted.
+
+VideoCortex is an upstream reference. Do not import a sibling checkout.
+See NOTICE.md and docs/adr/002-self-contained-instrument.md.

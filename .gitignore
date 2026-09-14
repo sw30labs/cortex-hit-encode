@@ -18,3 +18,4 @@ analysis/**/*.h5
 !analysis/README.md
 !analysis/compare_encodes.py
 .videocortex-cache/
+.che-cache/
