@@ -10,17 +10,17 @@ Language: [non-goals.md](non-goals.md).
 
 Nothing below is a result. These are the knobs that must stop moving before Phase 3.
 
-- [ ] Ban list read (README + [non-goals.md](non-goals.md))
-- [ ] One `hit_definition_id` from `stimuli/manifests/hit-definitions.md`, with chart/territory/source + retrieval date written in cohort notes
-- [ ] Matching rules written: genre band, language, era window (**±5 years** unless you record another), optional tempo/energy band
-- [ ] ≥8 hit-labeled + ≥8 matched non-hit rows in `stimuli/manifests/cohort-v0.csv` (from the example)
-- [ ] Optional H3: ≥4 within-artist pairs (`pair_id` shared); if fewer, H3 is underpowered — say so, do not peek later
-- [ ] Trim policy **one of:** `fixed_window_30s` (recommended) | `full_track` — write it here: `____________`
-- [ ] LUFS target written (recommended **−16 LUFS** integrated): `____________`
-- [ ] Lag mode **one of:** `stimulus` (recommended) | `scanner` — write it here: `____________`
-- [ ] Primary endpoint name frozen as `mean_auditory_roi_energy` (do not rename in the report)
-- [ ] Primary test frozen: two-sided permutation of the hit − non-hit difference on that scalar (shuffle within `pair_id` if present, else within cohort); unadjusted + loudness/duration-adjusted
-- [ ] Auditory ROI list frozen — exact `che` / Destrieux strings, confirmed against the overlay. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`. Write the frozen list: `____________`
+- [x] Ban list read (README + [non-goals.md](non-goals.md))
+- [x] One `hit_definition_id` from `stimuli/manifests/hit-definitions.md`, with chart/territory/source + retrieval date written in cohort notes — `deezer-rank-top2-vs-deepcut`: within each artist's Deezer artist/top pull (source api.deezer.com, territory AR/global, retrieved 2026-09-14T09:11:40Z), `hit` = Deezer `rank` top-2 (live/remix/demo excluded); `nonhit` = lowest-rank deep-cut from the same pull. Rank is Deezer's popularity score — a streams/popularity proxy, documented here.
+- [x] Matching rules written: genre band = Argentine rock canon (8 named artists); language = es; era window ±5 years where available (album release_date blank in Deezer top payload for older catalog — recorded as limitation); pairing is **within-artist** (strongest possible match), pair_id = artist+slot
+- [x] ≥8 hit-labeled + ≥8 matched non-hit rows in `stimuli/manifests/cohort-v0.csv` (from the example) — 14 hits + 14 non-hits
+- [x] Optional H3: ≥4 within-artist pairs (`pair_id` shared) — 14 within-artist pairs (every pair is within-artist; note this makes H1 and H3 slices heavily overlapping for this cohort — recorded as a design limitation)
+- [x] Trim policy **one of:** `fixed_window_30s` (recommended) | `full_track` — write it here: `fixed_window_30s (all stimuli are native 30s previews; no trim applied)`
+- [x] LUFS target written (recommended **−16 LUFS** integrated): `-16 LUFS target, EBU R128 two-pass loudnorm (TP -1.5, LRA 11); achieved lufs_post ~-19.2..-20.2 (TP-limited linear gain), recorded per-row as covariate`
+- [x] Lag mode **one of:** `stimulus` (recommended) | `scanner` — write it here: `stimulus`
+- [x] Primary endpoint name frozen as `mean_auditory_roi_energy` (do not rename in the report)
+- [x] Primary test frozen: two-sided permutation of the hit − non-hit difference on that scalar (shuffle within `pair_id` if present, else within cohort); unadjusted + loudness/duration-adjusted
+- [x] Auditory ROI list frozen — exact `che` / Destrieux strings, confirmed against the overlay. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`. Write the frozen list: `L/R "G temp sup/G T transv", L/R "G temp sup/Plan tempo", L/R "G temp sup/Lateral" (nilearn Destrieux labels G_temp_sup-G_T_transv, G_temp_sup-Plan_tempo, G_temp_sup-Lateral; confirmed present via fetch_atlas_surf_destrieux + regions._clean_name)`
 - [ ] `stimuli/manifests/cohort-v0.csv` committed; record that commit SHA: `____________`
 
 Do not start encodes until every box above is checked.
