@@ -4,7 +4,7 @@
 
 Encode hit vs matched non-hit stimuli with [VideoCortex](https://github.com/sw30labs/videocortex) / [TRIBE v2](https://github.com/facebookresearch/tribev2). Compare predicted **average-subject** cortical maps. Learn whether “hitness” leaves a fingerprint in the encoding — not whether a song will chart.
 
-**Status:** design phase (hypothesis + ADR + plan + Phase 1 freeze checklist). No batch encodes required to clone this repo. No results yet.
+**Status:** self-contained instrument + design phase (hypothesis + ADR + plan + Phase 1 freeze checklist). Clone and install this repo to encode — no sibling VideoCortex checkout. No batch encodes required to clone. No results yet.
 
 ## What this is
 
@@ -27,7 +27,8 @@ See [docs/non-goals.md](docs/non-goals.md).
 | Doc | Role |
 |---|---|
 | [docs/hypothesis.md](docs/hypothesis.md) | H1 / H0 / H2 / H3 (H4 deferred), predictions, falsifiers |
-| [docs/adr/001-cortex-hit-encode.md](docs/adr/001-cortex-hit-encode.md) | Decision record |
+| [docs/adr/001-cortex-hit-encode.md](docs/adr/001-cortex-hit-encode.md) | Experiment decision record |
+| [docs/adr/002-self-contained-instrument.md](docs/adr/002-self-contained-instrument.md) | Vendored `che` instrument |
 | [docs/experiment-plan.md](docs/experiment-plan.md) | Phased plan; primary endpoint `mean_auditory_roi_energy` |
 | [docs/protocol.md](docs/protocol.md) | Phase 1 freeze checklist + pilot steps |
 | [docs/non-goals.md](docs/non-goals.md) | Binding non-goals + canonical language ban |
@@ -35,21 +36,48 @@ See [docs/non-goals.md](docs/non-goals.md).
 
 ## Instrument
 
-Use the sibling VideoCortex CLI/deck for encodes. This repo stores **cohort manifests, run metadata, analysis, and claims discipline** — it does not vendor TRIBE weights.
+This repo vendors the VideoCortex **encode / render / doctor / fetch** path as package `cortex_hit_encode`. CLI: **`che`** (also `cortex-hit-encode`). VideoCortex is an upstream *reference* only — do not depend on a sibling checkout at runtime, do not edit that tree, do not re-download weights when a local cache already has them.
+
+This repo still does **not** vendor TRIBE weights or media. Copy or hardlink them in.
 
 ```bash
-# later, once past design phase:
-# videocortex doctor
-# videocortex render --audio path/to/stimulus.wav   # v0 is audio-primary; video only if freeze says so
+python -m pip install -e '.[dev]'          # renderer + doctor (no torch)
+# python -m pip install -e '.[predict,dev]'  # + tribev2 + torch, for encodes
+
+# Weights: copy from an existing VideoCortex / HuggingFace cache. Never re-download.
+scripts/import-weights.sh --from /path/to/videocortex-or-hf-cache
+# or, if the hub and feature cache live in different places:
+# scripts/import-weights.sh \
+#   --hf-src "$HF_HOME/hub" \
+#   --feature-src /path/to/videocortex/.videocortex-cache
+
+che doctor --offline
+che render --audio path/to/stimulus.wav    # v0 is audio-primary; --video only if freeze says so
 ```
+
+### Caches (private data root)
+
+| What | Default | Override |
+|---|---|---|
+| Feature cache (`--cache-dir`) | `./.che-cache` (gitignored) | `CORTEX_HIT_ENCODE_CACHE` |
+| HuggingFace hub (TRIBE + four encoders) | `$HF_HOME/hub` or `~/.cache/huggingface/hub` | `HF_HOME` or `HUGGINGFACE_HUB_CACHE` |
+
+Point `HF_HOME` / `HUGGINGFACE_HUB_CACHE` at a **private** volume (e.g. `/Volumes/DATA/cortex-hit-encode/hf`), not a VideoCortex checkout. `import-weights.sh` prefers hardlinks when source and dest share a filesystem. It never calls HuggingFace when the sources exist.
+
+`che fetch` is a last-resort download if you truly have no local copy. Prefer the import script.
+
+The VideoCortex command deck (`serve` / web) is **not** vendored.
 
 ## Layout
 
 ```
-stimuli/     # rights-cleared clips live outside git by default; manifests only
-runs/        # encode outputs / pointers (large binaries gitignored); receipt schema
-analysis/    # Phase 4 outline only — no results yet
-docs/        # hypothesis, ADR, plan, protocol, non-goals
+src/cortex_hit_encode/   # vendored encode instrument (che)
+scripts/import-weights.sh
+stimuli/                 # rights-cleared clips live outside git; manifests only
+runs/                    # encode outputs / pointers (binaries gitignored)
+analysis/                # Phase 4 outline only — no results yet
+docs/                    # hypothesis, ADRs, plan, protocol, non-goals
+.che-cache/              # feature cache (gitignored)
 ```
 
 ## Language ban list (UX + papers)

@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cortex-hit-encode"
+version = "0.1.0"
+description = "Self-contained TRIBE v2 encode instrument for the cortex-hit-encode experiment."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Nicolas Cravino" }]
+keywords = ["fmri", "brain-encoding", "neuroscience", "tribe", "fsaverage5"]
+
+# Renderer + doctor. The predict extra pulls torch and tribev2.
+dependencies = [
+  "numpy>=2.1",
+  "nilearn>=0.11",
+  "nibabel>=5.1",
+  "matplotlib>=3.8",
+  "scipy>=1.11",
+  "pillow>=10",
+  "huggingface_hub>=0.30",
+]
+
+[project.optional-dependencies]
+predict = [
+  "tribev2 @ git+https://github.com/facebookresearch/tribev2.git",
+  "torch>=2.5.1,<2.7",
+]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov",
+]
+
+[project.scripts]
+che = "cortex_hit_encode.cli:main"
+cortex-hit-encode = "cortex_hit_encode.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/sw30labs/cortex-hit-encode"
+UpstreamInstrument = "https://github.com/sw30labs/videocortex"
+Weights = "https://huggingface.co/facebook/tribev2"
+Paper = "https://arxiv.org/abs/2605.04326"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+  "slow: needs network or the full model stack",
+]

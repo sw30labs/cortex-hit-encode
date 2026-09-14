@@ -68,4 +68,4 @@ See [docs/non-goals.md](../non-goals.md). In particular: no decoder loop, no Bil
 
 ## Status of implementation
 
-Design docs in this repo, plus a Phase 1 freeze checklist, `runs/receipt.example.json`, and an analysis outline. Pilot encodes deferred until cohort + rights + VideoCortex doctor are green. No results yet.
+Design docs in this repo, plus a Phase 1 freeze checklist, `runs/receipt.example.json`, and an analysis outline. The encode instrument is now vendored here (`che`); see [ADR 002](002-self-contained-instrument.md). Pilot encodes deferred until cohort + rights + `che doctor` are green. No results yet.

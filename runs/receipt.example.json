@@ -10,14 +10,16 @@
   "stimulus_sha256": "<sha256 of the trimmed, loudness-normalized file>",
   "status": "ok",
   "failure_reason": null,
-  "videocortex_git_sha": "<sha>",
-  "videocortex_command": [
-    "videocortex",
+  "instrument_cli": "che",
+  "cortex_hit_encode_version": "<che --version>",
+  "vendored_videocortex_commit": "<cortex_hit_encode.VENDOR_COMMIT>",
+  "che_command": [
+    "che",
     "render",
     "--audio",
     "<local path>"
   ],
-  "tribe_weight_revision": "<id or hash from videocortex doctor / HF>",
+  "tribe_weight_revision": "<id or hash from che doctor / HF>",
   "lag_mode": "stimulus",
   "trim_policy": "fixed_window_30s",
   "lufs_target": -16,
@@ -28,7 +30,7 @@
   "roi_labels_frozen": [
     "confirm Destrieux strings at Phase 1 freeze"
   ],
-  "videocortex_run_dir": "<local path to VideoCortex run>",
+  "che_run_dir": "<local path to che run>",
   "output_paths": {
     "manifest": "manifest.json",
     "predictions": "predictions.npy",

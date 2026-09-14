@@ -1,7 +1,7 @@
 # Hypotheses — cortex-hit-encode
 
 Date: 2026-09-14  
-Instrument: VideoCortex + TRIBE v2 (encoding, average subject)  
+Instrument: `che` (vendored VideoCortex encode path) + TRIBE v2 (encoding, average subject)  
 Sibling craft work (out of band): artist-twin `insight/hit_patterns.py` (lyric structure only)
 
 ## Motivation
@@ -11,7 +11,7 @@ Commercial “hits” are labeled after social markets act. Encoding models pred
 ## Primary hypothesis
 
 **H1 (encode separation).**  
-Among genre-, language-, and era-matched stimuli, tracks meeting a pre-registered **hit label** criterion produce systematically different predicted average-subject cortical response patterns under TRIBE v2 / VideoCortex than matched non-hits — especially in auditory / temporal / language-adjacent ROIs and in temporal dynamics of regional energy — **after** controlling for loudness, duration, and (where available) vocal presence / cut-rate confounds.
+Among genre-, language-, and era-matched stimuli, tracks meeting a pre-registered **hit label** criterion produce systematically different predicted average-subject cortical response patterns under TRIBE v2 / `che` than matched non-hits — especially in auditory / temporal / language-adjacent ROIs and in temporal dynamics of regional energy — **after** controlling for loudness, duration, and (where available) vocal presence / cut-rate confounds.
 
 v0 operational gate (same name as plan + protocol): **`mean_auditory_roi_energy`** — mean `|x|` over a frozen Destrieux auditory ROI set, averaged across TRs; permutation test of the hit − non-hit difference.
 
@@ -69,5 +69,5 @@ Complete the Phase 1 freeze in [protocol.md](protocol.md) **before** the first r
 
 1. Freeze cohort inclusion rules and one `hit_definition_id` in `stimuli/manifests/cohort-v0.csv` (copy from the example).
 2. Freeze the **same** primary endpoint + test in [experiment-plan.md](experiment-plan.md) **and** [protocol.md](protocol.md): `mean_auditory_roi_energy`, permutation of the hit − non-hit difference.
-3. Freeze the Destrieux auditory ROI label list (confirm names against the VideoCortex overlay atlas).
-4. Record VideoCortex / TRIBE commit + weight hashes in each `runs/.../receipt.json` (see `runs/receipt.example.json`).
+3. Freeze the Destrieux auditory ROI label list (confirm names against the `che overlay` atlas).
+4. Record `che` / vendored VideoCortex commit + TRIBE weight hashes in each `runs/.../receipt.json` (see `runs/receipt.example.json`).

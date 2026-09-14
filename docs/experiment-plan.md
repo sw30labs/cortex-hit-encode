@@ -26,10 +26,15 @@ Mean absolute predicted signal (`|x|`) over a frozen Destrieux auditory ROI set,
 
 ## Phases
 
-### Phase 0 — Design (this PR / docs) ✅
+### Phase 0 — Design (docs) ✅
 
 - Hypothesis, ADR, protocol, repo skeleton.
 - No model download required.
+
+### Phase 0.5 — Self-contained instrument ✅
+
+- Vendored `che` CLI (ADR 002). Copy weights with `scripts/import-weights.sh`.
+- Still no experiment results; still no sibling VideoCortex runtime dependency.
 
 ### Phase 1 — Cohort lock + freeze
 
@@ -47,13 +52,13 @@ Do not start Phase 3 encodes until the freeze checklist in [protocol.md](protoco
 1. Rights-cleared local files only (user-supplied). Store under a local data root; gitignore binaries.
 2. Normalize loudness to the **frozen** LUFS target (recommend **−16 LUFS** integrated); record pre/post LUFS. This is standard prep, not the H2 test.
 3. Trim policy: **pick one** at freeze and stick to it. Recommend `fixed_window_30s` from the start of the file; full-track as a later sensitivity, not the v0 gate.
-4. Audio-primary for v0 (`videocortex render --audio …`); add video only if rights-ok and the VideoCortex path is stable for that modality mix.
+4. Audio-primary for v0 (`che render --audio …`); add video only if rights-ok and the encode path is stable for that modality mix.
 5. Compute content hashes (`sha256`); write `stimuli/manifests/hashes-v0.json`.
 
 ### Phase 3 — Encode
 
-1. Pin VideoCortex commit + TRIBE weight revisions via `videocortex doctor` / each `receipt.json`.
-2. Lag mode: **one mode per cohort**. Default `stimulus` (VideoCortex overlay / stimulus-aligned reading of the already-encoded series). Do not mix with `scanner`. This is a read convention, not a second model.
+1. Pin `che` / `cortex_hit_encode` version + vendored VideoCortex commit (`VENDOR_COMMIT`) + TRIBE weight revisions via `che doctor` / each `receipt.json`.
+2. Lag mode: **one mode per cohort**. Default `stimulus` (`che overlay` / stimulus-aligned reading of the already-encoded series). Do not mix with `scanner`. This is a read convention, not a second model.
 3. Batch render; store outputs or pointers under `runs/<cohort>/<stimulus_id>/` with a `receipt.json` (schema: `runs/receipt.example.json`). Large binaries stay gitignored.
 4. Failures: `status=failed`, reason, exclude from analysis; do not silently impute.
 
@@ -62,7 +67,7 @@ Do not start Phase 3 encodes until the freeze checklist in [protocol.md](protoco
 **Primary endpoint (v0) — locked name; ROI *labels* still filled at Phase 1 freeze:**
 
 - **Name:** `mean_auditory_roi_energy`
-- **Feature:** mean `|x|` in a small Destrieux auditory ROI set (VideoCortex / nilearn surface atlas). Confirm exact label strings against the overlay before freeze. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`.
+- **Feature:** mean `|x|` in a small Destrieux auditory ROI set (`che` / nilearn surface atlas). Confirm exact label strings against the overlay before freeze. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`.
 - **Test:** two-sided permutation of the hit − non-hit difference on that scalar (within-`pair_id` shuffle when pairs exist; else cohort shuffle).
 - **Covariates:** loudness (`lufs_post` or residual to target), duration; report adjusted and unadjusted.
 
@@ -101,7 +106,7 @@ Script outline: [analysis/README.md](../analysis/README.md). Do not invent numbe
 | Confound loudness | LUFS normalize; covariate; H2 sensitivity |
 | Small N | Pilot = exploratory; label as underpowered; no hype |
 | Average subject mismatch to niche genre | State limitation; don’t over-generalize |
-| Lag / TR misuse | Follow VideoCortex lag docs; one mode per cohort |
+| Lag / TR misuse | Follow `che overlay --lag-mode` docs; one mode per cohort |
 | Scope creep into decoder | Hard non-goal; reject PRs that add inverse |
 
 ## Effort sketch

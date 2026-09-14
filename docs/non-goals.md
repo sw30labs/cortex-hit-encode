@@ -7,7 +7,7 @@ Binding until a new ADR supersedes.
 3. **No hit probability product** — no `hit_probability`, “likely a hit,” “% chance,” Billboard forecast, chart forecast, “ensure a hit,” or any chart-forecast UI.
 4. **No mass scraping** — no Billboard/YouTube/Spotify harvesters as a feature; user-supplied rights-cleared media only.
 5. **No claiming personal neural readout** — no mind-reading, no “this is what someone is thinking”; average-subject predictions only.
-6. **No vendoring TRIBE weights** — depend on VideoCortex / upstream HF under NC terms.
+6. **No vendoring TRIBE weights** — instrument *code* is vendored here; weights stay off git. Copy or hardlink from an existing VideoCortex / HF cache (`scripts/import-weights.sh`). Do not re-download when sources exist. Do not modify VideoCortex.
 7. **No Karpathy Autoresearch mega-loop** in v0 — fixed pilot cohort, pre-registered tests, one report.
 8. **No H4 in v0** — lyric *hit-shaped craft* bridge stays deferred (see [hypothesis.md](hypothesis.md)).
 

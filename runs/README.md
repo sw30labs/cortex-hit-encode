@@ -7,7 +7,7 @@ Layout (v0):
 ```
 runs/<cohort>/<stimulus_id>/
   receipt.json       # this repo's metadata (required)
-  manifest.json      # VideoCortex run manifest (pointer or copy)
+  manifest.json      # che run manifest (pointer or copy)
   predictions.npy    # usually gitignored; hash it in the receipt
 ```
 

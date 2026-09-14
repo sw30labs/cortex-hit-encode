@@ -20,16 +20,17 @@ Nothing below is a result. These are the knobs that must stop moving before Phas
 - [ ] Lag mode **one of:** `stimulus` (recommended) | `scanner` — write it here: `____________`
 - [ ] Primary endpoint name frozen as `mean_auditory_roi_energy` (do not rename in the report)
 - [ ] Primary test frozen: two-sided permutation of the hit − non-hit difference on that scalar (shuffle within `pair_id` if present, else within cohort); unadjusted + loudness/duration-adjusted
-- [ ] Auditory ROI list frozen — exact VideoCortex / Destrieux strings, confirmed against the overlay. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`. Write the frozen list: `____________`
+- [ ] Auditory ROI list frozen — exact `che` / Destrieux strings, confirmed against the overlay. Suggested cluster to confirm: L/R `G temp sup/G T transv`, `G temp sup/Plan tempo`, `G temp sup/Lateral`. Write the frozen list: `____________`
 - [ ] `stimuli/manifests/cohort-v0.csv` committed; record that commit SHA: `____________`
 
 Do not start encodes until every box above is checked.
 
 ## 0. Preconditions
 
-- [ ] VideoCortex `doctor` green on the machine that will encode
-- [ ] TRIBE weights available under NC research use
-- [ ] Local data root created (e.g. `/Volumes/DATA/cortex-hit-encode/stimuli`) — **not** committed
+- [ ] `che doctor` green on the machine that will encode (`che doctor --offline` after weights are local)
+- [ ] TRIBE weights imported with `scripts/import-weights.sh` from an existing VideoCortex / HF cache — do not re-download; do not modify VideoCortex
+- [ ] `HF_HOME` / `HUGGINGFACE_HUB_CACHE` pointed at a **private** data root (not a VideoCortex tree)
+- [ ] Local stimulus root created (e.g. `/Volumes/DATA/cortex-hit-encode/stimuli`) — **not** committed
 
 ## 1. Cohort (example band)
 
@@ -52,10 +53,10 @@ Do not start encodes until every box above is checked.
 
 For each stimulus:
 
-- [ ] `videocortex render --audio …` (or `--video` only if freeze said so). Exact flags in `runs/<cohort>/<stimulus_id>/receipt.json` — see `runs/receipt.example.json`
-- [ ] Read / overlay time alignment uses the frozen lag mode (`stimulus` vs `scanner` is a VideoCortex overlay read, not a second encode). Do not mix modes in one cohort.
-- [ ] Point receipt at VideoCortex `manifest.json`, `predictions.npy`, contact sheet / overlay paths
-- [ ] Record VideoCortex git SHA + TRIBE weight revision in the receipt
+- [ ] `che render --audio …` (or `--video` only if freeze said so). Exact flags in `runs/<cohort>/<stimulus_id>/receipt.json` — see `runs/receipt.example.json`
+- [ ] Read / overlay time alignment uses the frozen lag mode (`stimulus` vs `scanner` is a `che overlay` read, not a second encode). Do not mix modes in one cohort.
+- [ ] Point receipt at `manifest.json`, `predictions.npy`, contact sheet / overlay paths
+- [ ] Record `che` / `cortex_hit_encode` version + vendored VideoCortex commit (`VENDOR_COMMIT`) + TRIBE weight revision in the receipt
 - [ ] On failure: `status=failed`, reason, do not analyze
 
 ## 4. Analysis gate (Phase 4)
